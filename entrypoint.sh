@@ -14,12 +14,12 @@ echo "repository name resolved ${repository}"
 if [[ "${INPUT_LANGUAGE}" == "python" ]] 
 then
     echo "Python specified ... Installing Python"
-    sudo apt-get install -y python3.8
+    apt-get install -y python3.8
     pip3 install "${repository}/requirements.txt"
 elif [[ "${INPUT_LANGUAGE}" == "java" ]]
 then
     echo "Java specified ... Installing Java"
-    sudo apt-get install -y openjdk-8-jdk
+    apt-get install -y openjdk-8-jdk
 fi
 
 cd "${repository}"
