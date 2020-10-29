@@ -35,21 +35,26 @@ git checkout "${INPUT_BUILD_FROM}"
 make_command=(${INPUT_MAKE_COMMAND})
 "${make_command[@]}"
 
+# Create temporary folder and copy output to that
 cd .. && mkdir -p public
 cp -a "${repository}/${INPUT_DOCS_FOLDER}/." public/
 
+# reset changes in source branch
 cd "${repository}"
 git reset --hard
 
+# create empty github page branch and reset
 git checkout --orphan "${INPUT_PAGES_BRANCH}"
 git rm -rf .
 cd ..
 
+# copy to new branch
 cp -a  public/. "${repository}/"
 
 cd "${repository}"
 git remote add publisher "${remote_repo}"
 
+# push to new branch
 git stage -A
 git commit -m "Deploy to GitHub Pages" 
 git push -f publisher "${INPUT_PAGES_BRANCH}"
