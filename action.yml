@@ -1,0 +1,40 @@
+name: 'Github Pages Deploy Action'
+author: Avinal
+description: 'Generate Documentation or Static Site and publish to Github Pages'
+
+inputs:
+  GITHUB_TOKEN:
+    description: 'GitHub access token with Repo Access'
+    required: true
+    default: ${{ github.token }}
+
+  LANGUAGE:
+    description: 'java(for JavaDoc), python(For Python Site/Documentation Generators)'
+    required: true
+
+  PIP_PACKAGES:
+    description: 'add pip packages here seperated by spaces if LANGUAGE=python'
+    required: false
+
+  MAKE_COMMAND:
+    description: 'make command to generate html'
+    required: true
+    default: "make html"
+
+  PAGES_BRANCH:
+    description: 'Deploy pages to which branch'
+    required: true
+    default: 'gh-pages'
+
+  BUILD_FROM:
+    description: 'Generate Site from which branch'
+    required: true
+    default: 'master'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'sun'
+  color: 'yellow'
