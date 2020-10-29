@@ -21,7 +21,7 @@ then
     echo "Python specified ... Installing Python"
     packages=(${INPUT_LANGUAGE})
     apt-get install --no-install-recommends -y "${packages[@]}"
-    pip3 install "${repository}/requirements.txt"
+    pip3 install -r "${repository}/requirements.txt"
 elif [[ "${INPUT_LANGUAGE}" == "java" ]]
 then
     echo "Java specified ... Installing Java"
