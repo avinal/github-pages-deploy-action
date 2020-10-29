@@ -12,10 +12,6 @@ inputs:
     description: 'java(for JavaDoc), python(For Python Site/Documentation Generators)'
     required: true
 
-  PIP_PACKAGES:
-    description: 'add pip packages here seperated by spaces if LANGUAGE=python'
-    required: false
-
   MAKE_COMMAND:
     description: 'make command to generate html'
     required: true
@@ -30,6 +26,11 @@ inputs:
     description: 'Generate Site from which branch'
     required: true
     default: 'master'
+
+  DOCS_FOLDER:
+    description: 'folder in which generated files are stored'
+    required: true
+    default: 'docs'
 
 runs:
   using: 'docker'
