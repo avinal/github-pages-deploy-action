@@ -16,10 +16,10 @@ echo "repository name resolved ${repository}"
 
 # Install Language packages
 DEBIAN_FRONTEND=noninteractive 
-if [[ "${INPUT_LANGUAGE}" == "python" ]] 
+if [[ "${INPUT_LANGUAGE}" == *"python"* ]] 
 then
     echo "Python specified ... Installing Python"
-    apt-get install --no-install-recommends -y python3.8
+    apt-get install --no-install-recommends -y "${INPUT_LANGUAGE}"
     pip3 install "${repository}/requirements.txt"
 elif [[ "${INPUT_LANGUAGE}" == "java" ]]
 then
