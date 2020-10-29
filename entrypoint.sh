@@ -11,15 +11,16 @@ repository="${reponame[1]}"
 echo "repository name resolved ${repository}"
 
 # Install Language packages
+DEBIAN_FRONTEND=noninteractive 
 if [[ "${INPUT_LANGUAGE}" == "python" ]] 
 then
     echo "Python specified ... Installing Python"
-    DEBIAN_FRONTEND=noninteractive && apt-get install --no-install-recommends -y python3.8
+    apt-get install --no-install-recommends -y python3.8
     pip3 install "${repository}/requirements.txt"
 elif [[ "${INPUT_LANGUAGE}" == "java" ]]
 then
     echo "Java specified ... Installing Java"
-    DEBIAN_FRONTEND=noninteractive && apt-get install --no-install-recommends -y openjdk-8-jdk
+    apt-get install --no-install-recommends -y openjdk-8-jdk
 fi
 
 cd "${repository}"
