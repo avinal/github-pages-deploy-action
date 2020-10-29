@@ -19,7 +19,8 @@ DEBIAN_FRONTEND=noninteractive
 if [[ "${INPUT_LANGUAGE}" == *"python"* ]] 
 then
     echo "Python specified ... Installing Python"
-    apt-get install --no-install-recommends -y "${INPUT_LANGUAGE}"
+    packages=(${INPUT_LANGUAGE})
+    apt-get install --no-install-recommends -y "${packages[@]}"
     pip3 install "${repository}/requirements.txt"
 elif [[ "${INPUT_LANGUAGE}" == "java" ]]
 then
