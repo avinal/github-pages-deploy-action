@@ -1,7 +1,8 @@
 #! /bin/bash
 
-git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-git config user.name "GitHub Actions"
+git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+git config --global user.name "GitHub Actions"
+remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
 # Clone the target repo
 clone_repo_url="https://github.com/${GITHUB_REPOSITORY}.git"
@@ -32,8 +33,6 @@ git checkout "${INPUT_BUILD_FROM}"
 # Run make command
 make_command=(${INPUT_MAKE_COMMAND})
 "${make_command[@]}"
-
-remote_repo="https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 
 # Deploy Pages
 ghp-import -m "GitHub Pages Updated" -r "${remote_repo}" -b "${INPUT_PAGES_BRANCH}" "${INPUT_DOCS_FOLDER}" 
