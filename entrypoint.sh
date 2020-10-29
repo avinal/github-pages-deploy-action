@@ -15,7 +15,7 @@ if [ "${INPUT_LANGUAGE}" = "python" ]; then
     echo "Python specified ... Installing Python"
     sudo apt-get install -y python3.8
     pip3 install "${repository}/requirements.txt"
-else if [ "${LANGUAGE}" = "java" ]; then
+elif [ "${LANGUAGE}" = "java" ]; then
     echo "Java specified ... Installing Java"
     sudo apt-get install -y openjdk-8-jdk
 fi
@@ -34,4 +34,4 @@ git config user.name "GitHub Actions"
 # Deploy Pages
 ghp-import -m "GitHub Pages Updated" -b "${INPUT_PAGES_BRANCH}" "${INPUT_DOCS_FOLDER}"
 git push -f origin "${INPUT_PAGES_BRANCH}"
-echo "Page Deployment Successful"
+echo "Page Deployment Successfull"
