@@ -47,7 +47,7 @@ cd ..
 cp -a  public/. "${repository}/"
 
 cd "${repository}"
-git add publisher "${remote_repo}"
+git remote add publisher "${remote_repo}"
 
 git stage -A
 git commit -m "Deploy to GitHub Pages" 
