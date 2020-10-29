@@ -1,1 +1,1 @@
-# github-pages-deploy-action
+# Github Pages Deploy Action for Documentation and Static Site Generators
