@@ -9,9 +9,6 @@ ENV TZ=Asia/Kolkata
 # Run update and install packages
 RUN apt-get update && apt-get install -y git make python3-pip tzdata
 
-# Install gp-import 
-RUN pip3 install ghp-import
-
 # grant permissions
 RUN chmod +x entrypoint.sh
 

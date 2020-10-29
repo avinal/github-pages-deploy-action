@@ -34,7 +34,22 @@ git checkout "${INPUT_BUILD_FROM}"
 make_command=(${INPUT_MAKE_COMMAND})
 "${make_command[@]}"
 
-# Deploy Pages
-ghp-import -m "GitHub Pages Updated" -r "${remote_repo}" -b "${INPUT_PAGES_BRANCH}" "${INPUT_DOCS_FOLDER}" 
-git push -f origin "${INPUT_PAGES_BRANCH}"
-echo "Page Deployment Successfull"
+cd .. && mkdir -p public
+cp -a "${repository}/${INPUT_DOCS_FOLDER}/." public/
+
+cd "${repository}"
+git reset --hard
+
+git checkout --orphan "${INPUT_PAGES_BRANCH}"
+git rm -rf .
+cd ..
+
+cp -a  public/. "${repository}/"
+
+cd "${repository}"
+git add publisher "${remote_repo}"
+
+git stage -A
+git commit -m "Deploy to GitHub Pages" 
+git push -f publisher "${INPUT_PAGES_BRANCH}"
+echo "Github Pages Deployed"
