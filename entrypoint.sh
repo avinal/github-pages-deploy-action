@@ -11,11 +11,13 @@ repository="${reponame[1]}"
 echo "repository name resolved ${repository}"
 
 # Install Language packages
-if [ "${INPUT_LANGUAGE}" = "python" ]; then
+if [[ "${INPUT_LANGUAGE}" == "python" ]] 
+then
     echo "Python specified ... Installing Python"
     sudo apt-get install -y python3.8
     pip3 install "${repository}/requirements.txt"
-elif [ "${LANGUAGE}" = "java" ]; then
+elif [[ "${INPUT_LANGUAGE}" == "java" ]]
+then
     echo "Java specified ... Installing Java"
     sudo apt-get install -y openjdk-8-jdk
 fi
